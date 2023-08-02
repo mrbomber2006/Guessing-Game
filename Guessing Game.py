@@ -1,8 +1,9 @@
 import random
 from colorama import Fore, Style
+import os
 
 attempts = 5
-challenger = input(Style.BRIGHT+ "Challenger, enter your name: ")
+challenger = input(Style.BRIGHT + "Challenger, enter your name: ")
 questioner = input(Style.BRIGHT +
                    "Questioner, enter your name (if there is no questioner, insert 'bot'): ")
 
@@ -15,7 +16,7 @@ else:
             the_number = int(
                 input(Fore.LIGHTCYAN_EX + f"{questioner}, enter the number (between 0 and 99): "))
             if 0 <= the_number <= 99:
-                print(Fore.GREEN + "**** \n" * 9999)
+                os.system('cls' if os.name == 'nt' else 'clear')
                 break
             else:
                 print(Fore.RED +
@@ -29,12 +30,14 @@ while True:
     try:
 
         while attempts > 0:
-            answer = int(input(Fore.LIGHTWHITE_EX + f"{challenger}, guess the number: "))
+            answer = int(input(Fore.LIGHTWHITE_EX +
+                         f"{challenger}, guess the number: "))
             if answer == the_number:
                 print(Fore.GREEN + "*" * 10)
-                print(Fore.LIGHTGREEN_EX + f"{challenger}, you guessed it right!")
+                print(Fore.LIGHTGREEN_EX +
+                      f"{challenger}, you guessed it right!")
                 print(Fore.LIGHTMAGENTA_EX +
-                    f"The number {questioner} entered was {the_number}.")
+                      f"The number {questioner} entered was {the_number}.")
                 print(Fore.GREEN + "*" * 10)
                 break
             elif answer < the_number:
@@ -65,7 +68,7 @@ if attempts == 0 and answer != the_number:
     print(Fore.GREEN + "*" * 10)
 elif answer == the_number:
     print(Fore.LIGHTGREEN_EX + f"{challenger}, you guessed it right!")
-    print(Fore.LIGHTMAGENTA_EX + 
+    print(Fore.LIGHTMAGENTA_EX +
           f"The number {questioner} entered was {the_number}.")
 
 print(Fore.LIGHTWHITE_EX + "Press the up arrow and enter to play again.")
